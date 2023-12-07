@@ -1,0 +1,29 @@
+# Workflow Name
+name: Great Learning Action
+
+# Triggers: Define when the workflow should be triggered
+on:
+  push:
+    branches: [main]  # Trigger on push to the main branch
+  pull_request:
+    branches: [$default-branch]  # Trigger on pull request to the default branch
+
+# Jobs: Define the list of jobs to be executed
+jobs:
+  # Job Configuration
+  build:
+    runs-on: ubuntu-latest  # Define the operating system for the job
+
+    # Steps: Define a sequence of tasks to be executed within the job
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11  # Use Python 3.11
+
+      - name: Checkout code
+        uses: actions/checkout@v4  # Use the checkout action to clone the repository
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  
