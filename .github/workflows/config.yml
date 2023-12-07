@@ -27,3 +27,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt  
+      - name: Build and push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v4  # Use the Docker build and push action
+        with:
+          image: sp0609/imagetrial1  # Specify the Docker image name
+          registry: docker.io  # Specify the Docker registry
+          username: ${{ secrets.DOCKER_USERNAME }}  # Use Docker username from secrets
+          password: ${{ secrets.DOCKER_PASSWORD }}  # Use Docker password from secrets
